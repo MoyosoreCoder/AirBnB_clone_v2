@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This is the state class"""
+"""This isa python script with the state class"""
 from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
@@ -10,7 +10,7 @@ import shlex
 
 
 class State(BaseModel, Base):
-    """This is the class for State
+    """This is the class for State method
     Attributes:
         name: input name
     """
@@ -21,15 +21,15 @@ class State(BaseModel, Base):
 
     @property
     def cities(self):
-        var = models.storage.all()
-        lista = []
+        var_all = models.storage.all()
+        list_in = []
         result = []
-        for key in var:
+        for key in var_all:
             city = key.replace('.', ' ')
             city = shlex.split(city)
             if (city[0] == 'City'):
-                lista.append(var[key])
-        for elem in lista:
+                list_in.append(var_all[key])
+        for elem in list_in:
             if (elem.state_id == self.id):
                 result.append(elem)
         return (result)
